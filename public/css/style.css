@@ -1,0 +1,976 @@
+:root {
+    /* Gaming Color Palette */
+    --pixel-dark: #0f172a;
+    --pixel-darker: #020617;
+    --neon-green: #00ff41;
+    --neon-blue: #00d9ff;
+    --neon-pink: #ff006e;
+    --neon-yellow: #ffbe0b;
+    --neon-purple: #8b5cf6;
+    --hp-red: #ef4444;
+    --xp-gold: #fbbf24;
+    --mana-blue: #3b82f6;
+    --orange: #e6850e;
+
+
+
+    /* Shadows & Effects */
+    --glow-green: 0 0 20px rgba(0, 255, 65, 0.5);
+    --glow-blue: 0 0 20px rgba(0, 217, 255, 0.5);
+    --glow-pink: 0 0 20px rgba(255, 0, 110, 0.5);
+    --pixel-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    background: var(--pixel-darker);
+    color: var(--neon-green);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+@keyframes scanlines {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+/* Navbar Gaming Style */
+.navbar {
+    background: linear-gradient(135deg, var(--pixel-dark) 0%, #1e293b 100%);
+    color: var(--neon-green);
+    padding: 1.5rem 2rem;
+    border-bottom: 3px solid var(--neon-green);
+    box-shadow: 0 4px 20px rgba(0, 255, 65, 0.3);
+    position: relative;
+    z-index: 100;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+            var(--neon-green) 0%,
+            var(--neon-blue) 50%,
+            var(--neon-pink) 100%);
+    animation: colorShift 3s ease-in-out infinite;
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    text-shadow:
+        2px 2px 0 var(--pixel-dark),
+        0 0 10px var(--neon-green);
+    animation: titlePulse 2s ease-in-out infinite;
+    letter-spacing: 2px;
+}
+
+
+/* Buttons - Arcade Style */
+.btn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    padding: 0.8rem 1.5rem;
+    border: 3px solid;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: var(--pixel-shadow);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+    transform: translateY(0px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.btn-success {
+    background: var(--neon-green);
+    border-color: var(--neon-green);
+    color: var(--pixel-darker);
+    box-shadow:
+        var(--pixel-shadow),
+        0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.btn-success:hover {
+    background: #00cc33;
+    box-shadow:
+        6px 6px 0px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(0, 255, 65, 0.6);
+}
+
+.btn-danger {
+    background: var(--hp-red);
+    border-color: var(--hp-red);
+    color: white;
+    box-shadow:
+        var(--pixel-shadow),
+        0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.btn-warning {
+    background: var(--neon-yellow);
+    border-color: var(--neon-yellow);
+    color: var(--pixel-darker);
+    box-shadow:
+        var(--pixel-shadow),
+        0 0 20px rgba(255, 190, 11, 0.3);
+}
+
+.btn-info {
+    background: var(--neon-blue);
+    border-color: var(--neon-blue);
+    color: var(--pixel-darker);
+    box-shadow:
+        var(--pixel-shadow),
+        0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+.btn-outline-info {
+    background: transparent;
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.btn-outline-info:hover {
+    background: var(--neon-blue);
+    color: var(--pixel-darker);
+}
+
+/* Cards - Game Panel Style */
+.card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 3px solid var(--neon-green);
+    border-radius: 0;
+    box-shadow:
+        var(--pixel-shadow),
+        inset 0 0 30px rgba(0, 255, 65, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg,
+            var(--neon-green),
+            var(--neon-blue),
+            var(--neon-pink),
+            var(--neon-green));
+    background-size: 400% 400%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        8px 8px 0px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(0, 255, 65, 0.4);
+}
+
+.card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+    margin-bottom: 1rem;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    cursor: pointer;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-card h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px currentColor;
+}
+
+
+.dashboard-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 255, 65, 0.2);
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(-5px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Progress Bars - XP Style */
+.progress {
+    background: var(--pixel-darker);
+    border: 2px solid var(--neon-green);
+    border-radius: 0;
+    height: 30px;
+    overflow: visible;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg,
+            var(--xp-gold) 0%,
+            var(--neon-yellow) 50%,
+            var(--xp-gold) 100%);
+    background-size: 200% 100%;
+    animation: progressShine 2s linear infinite;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    animation: progressGlint 3s ease-in-out infinite;
+}
+
+/* Forms - Retro Gaming */
+.form-control {
+    background: var(--pixel-darker);
+    border: 2px solid var(--neon-green);
+    border-radius: 0;
+    color: var(--neon-green);
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background: #1e293b;
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    box-shadow:
+        0 0 20px rgba(0, 217, 255, 0.3),
+        inset 0 0 10px rgba(0, 217, 255, 0.1);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(0, 255, 65, 0.4);
+}
+
+/* Badges - Stat Pills */
+.badge {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0;
+    border: 2px solid;
+    letter-spacing: 1px;
+    box-shadow: var(--pixel-shadow);
+}
+
+.bg-danger {
+    background: var(--hp-red) !important;
+    border-color: var(--hp-red);
+}
+
+.bg-success {
+    background: var(--neon-green) !important;
+    border-color: var(--neon-green);
+    color: var(--pixel-darker) !important;
+}
+
+/* List Items */
+.list-group-item {
+    background: var(--pixel-dark);
+    border: 2px solid var(--neon-green);
+    border-radius: 0;
+    color: var(--neon-green);
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background: #1e293b;
+    transform: translateX(10px);
+    box-shadow: -4px 0 0 var(--neon-green);
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Text Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Press Start 2P', cursive;
+    color: var(--neon-green);
+    line-height: 1.6;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    50% {
+        text-shadow:
+            0 0 20px var(--neon-green),
+            0 0 30px var(--neon-green),
+            0 0 40px var(--neon-green);
+    }
+}
+
+.lead {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: var(--neon-blue);
+}
+
+/* Stats Display */
+.stat-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--pixel-darker);
+    border: 2px solid var(--neon-green);
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    margin: 0.5rem;
+    box-shadow: var(--pixel-shadow);
+}
+
+/* Avatar Styling */
+img.rounded-circle {
+    border: 4px solid var(--neon-green);
+    box-shadow:
+        0 0 30px var(--neon-green),
+        inset 0 0 20px rgba(0, 255, 65, 0.2);
+    animation: avatarPulse 3s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 30px var(--neon-green),
+            inset 0 0 20px rgba(0, 255, 65, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 50px var(--neon-green),
+            0 0 70px rgba(0, 255, 65, 0.5),
+            inset 0 0 30px rgba(0, 255, 65, 0.3);
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--neon-green);
+    border-radius: 0;
+    border-top-color: transparent;
+    animation: pixelSpin 1s linear infinite;
+}
+
+
+/* Floating Action Effect */
+.float-action {
+    animation: floatUp 2s ease-out forwards;
+    position: fixed;
+    z-index: 9999;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+/* Particle Effects Container */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--pixel-darker);
+    border-left: 2px solid var(--neon-green);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-green);
+    border: 2px solid var(--pixel-darker);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        font-size: 0.6rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .display-4 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Text Colors */
+.text-light {
+    color: var(--neon-green) !important;
+}
+
+.text-danger {
+    color: var(--hp-red) !important;
+}
+
+.text-success {
+    color: var(--neon-green) !important;
+}
+
+/* Background Colors */
+.bg-dark {
+    background: var(--pixel-darker) !important;
+}
+
+.bg-secondary {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+    border: 3px solid var(--neon-green);
+}
+
+.bg-black {
+    background: var(--pixel-darker) !important;
+}
+
+/* Weapon Images */
+.img-fluid {
+    filter: drop-shadow(0 0 15px var(--neon-green));
+    transition: all 0.3s ease;
+}
+
+.img-fluid:hover {
+    filter: drop-shadow(0 0 25px var(--neon-green));
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Achievement Toast */
+.achievement-toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--pixel-dark), #1e293b);
+    border: 3px solid var(--xp-gold);
+    padding: 1.5rem;
+    z-index: 10000;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    box-shadow:
+        var(--pixel-shadow),
+        0 0 30px rgba(251, 191, 36, 0.5);
+    animation: slideInRight 0.5s ease-out, wiggle 0.5s ease-in-out 0.5s 3;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.register-container {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+}
+
+.register-card {
+    max-width: 450px;
+    width: 100%;
+    animation: cardEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.form-floating {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-floating input {
+    padding: 1rem 0.75rem;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--neon-green);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.form-control {
+    padding-left: 3rem !important;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.benefits-list li {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    color: var(--neon-blue);
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--neon-green);
+    font-size: 1.3rem;
+}
+
+.quest-card {
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.quest-card:hover {
+    transform: translateX(10px) scale(1.02);
+}
+
+.quest-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+.xp-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--xp-gold);
+    color: var(--pixel-darker);
+    padding: 0.5rem 1rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    border: 3px solid var(--pixel-darker);
+    box-shadow: 0 0 20px var(--xp-gold);
+}
+
+.complete-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.complete-btn::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.complete-btn.completed::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content-custom {
+    background: linear-gradient(135deg, var(--pixel-dark), #1e293b);
+    border: 3px solid var(--neon-green);
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow:
+        var(--pixel-shadow), s 0 0 50px rgba(0, 255, 65, 0.4);
+    animation: modalSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Make sure inputs are visible */
+#createChallengeModal .form-control {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive modal */
+@media (max-width: 576px) {
+    .modal-content-custom {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+.quest-card {
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.quest-card:hover {
+    transform: translateX(10px) scale(1.02);
+}
+
+.quest-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+.xp-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--xp-gold);
+    color: var(--pixel-darker);
+    padding: 0.5rem 1rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    border: 3px solid var(--pixel-darker);
+    box-shadow: 0 0 20px var(--xp-gold);
+}
+
+.complete-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.complete-btn::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.complete-btn.completed::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.weapon-card {
+    position: relative;
+    perspective: 1000px;
+    transition: all 0.3s ease;
+}
+
+.weapon-card:hover {
+    transform: translateY(-10px);
+}
+
+.weapon-card .card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.weapon-card:hover .card {
+    transform: rotateY(5deg);
+}
+
+.weapon-img-container {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.weapon-img {
+    max-height: 120px;
+    filter: drop-shadow(0 0 20px var(--neon-blue));
+    transition: all 0.3s ease;
+    animation: weaponFloat 3s ease-in-out infinite;
+}
+
+@keyframes weaponFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.weapon-card:hover .weapon-img {
+    transform: scale(1.2) rotate(15deg);
+    filter: drop-shadow(0 0 30px var(--neon-blue)) drop-shadow(0 0 40px var(--neon-green));
+}
+
+.level-req {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--neon-purple);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    border: 2px solid white;
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+.locked-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: var(--hp-red);
+    text-shadow: 0 0 20px var(--hp-red);
+    z-index: 10;
+}
+
+.damage-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--pixel-darker);
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--hp-red);
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: var(--hp-red);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.rarity-legendary {
+    border-color: var(--xp-gold) !important;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.5) !important;
+}
+
+.rarity-epic {
+    border-color: var(--neon-purple) !important;
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.5) !important;
+}
+
+.rarity-rare {
+    border-color: var(--neon-blue) !important;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5) !important;
+}

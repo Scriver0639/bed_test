@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Quest - Level Up Your Life</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      animation: heroGlow 3s ease-in-out infinite, heroFloat 4s ease-in-out infinite;
+      text-shadow:
+        0 0 20px var(--neon-green),
+        0 0 40px var(--neon-green),
+        0 0 60px var(--neon-green);
+    }
+
+    @keyframes heroGlow {
+
+      0%,
+      100% {
+        text-shadow:
+          0 0 20px var(--neon-green),
+          0 0 40px var(--neon-green);
+      }
+
+      50% {
+        text-shadow:
+          0 0 30px var(--neon-green),
+          0 0 60px var(--neon-green),
+          0 0 80px var(--neon-green);
+      }
+    }
+
+    .feature-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 1rem;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    .cta-button {
+      font-size: 1.2rem;
+      padding: 1.2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      animation: ctaBounce 2s ease-in-out infinite;
+    }
+
+    .feature-card {
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-15px) scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-light">
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">🎮 WELLNESS QUEST</a>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <a href="login.html" class="btn btn-outline-info logged-out">▶ LOGIN</a>
+        <a href="register.html" class="btn btn-info logged-out">★ REGISTER</a>
+        <a href="profile.html" class="btn btn-success logged-in" style="display: none;">👤 PROFILE</a>
+        <button id="logoutBtn" class="btn btn-danger logged-in" style="display: none;">✖ LOGOUT</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="container">
+      <h1 class="hero-title">
+        WELLNESS QUEST
+      </h1>
+      <p class="lead mt-4" style="font-size: 1.8rem; color: var(--neon-blue); font-family: 'VT323', monospace;">
+        Transform Your Health Into An Epic Adventure
+      </p>
+      <p style="font-size: 1.3rem; color: var(--neon-green); font-family: 'VT323', monospace; margin: 2rem 0;">
+        Complete challenges • Earn XP • Level up • Unlock legendary gear
+      </p>
+      <a href="register.html" class="btn btn-success btn-lg cta-button mt-3">
+        🚀 START YOUR JOURNEY
+      </a>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-5"
+      style="font-family: 'Press Start 2P', cursive; font-size: 2rem; color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink);">
+      ⚡ GAME FEATURES
+    </h2>
+
+    <div class="row g-4 justify-content-center mb-4">
+      <div class="col-md-4">
+        <div class="card feature-card bg-secondary h-100 text-center p-4">
+          <span class="feature-icon">📈</span>
+          <h3
+            style="font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--neon-green); margin-bottom: 1rem;">
+            LEVEL SYSTEM
+          </h3>
+          <p style="font-family: 'VT323', monospace; font-size: 1.2rem;">
+            Gain XP from every workout and healthy habit. Watch your character grow stronger!
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card feature-card bg-secondary h-100 text-center p-4">
+          <span class="feature-icon">🎯</span>
+          <h3
+            style="font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--neon-blue); margin-bottom: 1rem;">
+            DAILY QUESTS
+          </h3>
+          <p style="font-family: 'VT323', monospace; font-size: 1.2rem;">
+            Complete wellness missions to earn rewards and maintain your streak!
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card feature-card bg-secondary h-100 text-center p-4">
+          <span class="feature-icon">⚔️</span>
+          <h3
+            style="font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--neon-yellow); margin-bottom: 1rem;">
+            EPIC GEAR
+          </h3>
+          <p style="font-family: 'VT323', monospace; font-size: 1.2rem;">
+            Unlock powerful weapons and equipment as you reach new levels!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="card feature-card bg-secondary h-100 text-center p-4">
+          <span class="feature-icon">👤</span>
+          <h3
+            style="font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--neon-purple); margin-bottom: 1rem;">
+            YOUR HERO
+          </h3>
+          <p style="font-family: 'VT323', monospace; font-size: 1.2rem;">
+            Create and customize your unique fitness warrior avatar!
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card feature-card bg-secondary h-100 text-center p-4" style="border-color: var(--xp-gold);">
+          <span class="feature-icon">🏆</span>
+          <h3
+            style="font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--xp-gold); margin-bottom: 1rem;">
+            LEADERBOARD
+          </h3>
+          <p style="font-family: 'VT323', monospace; font-size: 1.2rem;">
+            Compete with other players and climb the global rankings!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- CTA Section -->
+  <div class="container text-center mt-5 mb-5">
+    <div class="card bg-secondary p-5">
+      <h2
+        style="font-family: 'Press Start 2P', cursive; font-size: 1.8rem; color: var(--xp-gold); margin-bottom: 2rem;">
+        READY TO TRANSFORM?
+      </h2>
+      <p style="font-family: 'VT323', monospace; font-size: 1.4rem; margin-bottom: 2rem;">
+        Join thousands of players leveling up their fitness!
+      </p>
+      <div>
+        <a href="register.html" class="btn btn-success btn-lg m-2" style="font-size: 1rem;">
+          🎮 CREATE ACCOUNT
+        </a>
+        <a href="login.html" class="btn btn-info btn-lg m-2" style="font-size: 1rem;">
+          🔑 LOGIN
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Add entrance animations for feature cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.feature-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.5s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100 + 500);
+      });
+    });
+  </script>
+
+  <script src="js/userNavbarToggle.js"></script>
+</body>
+
+</html>
